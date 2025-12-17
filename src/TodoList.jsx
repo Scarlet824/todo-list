@@ -1,6 +1,17 @@
-import TodoListItem from './TodoListItem'
+import TodoListItem from './TodoListItem';
 
-function TodoList(){
+function TodoList({todoList}){
+
+    return(
+        <ul>
+            {todoList.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
+        </ul>
+    )
+}
+
+export default TodoList
+
+/* function TodoList(){
     const todos = [
         {id: 1, title: "review resources"},
         {id: 2, title: "take notes"},
@@ -12,10 +23,9 @@ function TodoList(){
                 <TodoListItem key={todo.id} todo = {todo.title}/>
             ))}
         </ul>
-    /*<ul>
+    
+    <ul>
         {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
-    </ul>*/
+    </ul>
     )
-}
-
-export default TodoList
+} */
