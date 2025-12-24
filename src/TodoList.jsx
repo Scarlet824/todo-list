@@ -1,31 +1,26 @@
-import TodoListItem from './TodoListItem';
+import TodoListItem from "./TodoListItem";
 
-function TodoList({todoList}){
+function TodoList({todoList, onCompleteTodo}) {
+  const mapTodoList = todoList.filter(
+    (todo) => !todo.isCompleted
+  );
 
-    return(
-        <ul>
-            {todoList.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
-        </ul>
-    )
+  if (mapTodoList.length === 0) {
+    return <p>Add todo above to get started</p>;
+  }
+  else {
+    return (
+    <ul>
+      {mapTodoList.map((todo) => (
+        <TodoListItem
+          key={todo.id}
+          todo={todo}
+          onCompleteTodo={onCompleteTodo}
+        />
+      ))}
+    </ul>
+    );
+  } 
 }
 
-export default TodoList
-
-/* function TodoList(){
-    const todos = [
-        {id: 1, title: "review resources"},
-        {id: 2, title: "take notes"},
-        {id: 3, title: "code out app"},
-    ]
-    return (
-        <ul>
-            {todos.map(todo => (
-                <TodoListItem key={todo.id} todo = {todo.title}/>
-            ))}
-        </ul>
-    
-    <ul>
-        {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
-    </ul>
-    )
-} */
+export default TodoList;
